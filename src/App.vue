@@ -4,13 +4,30 @@
     <a v-for="a in navbar" :key="a">{{ a }}</a>
   </div>
 
-  <img alt="Vue logo" src="./assets/logo.png">
-  <div v-for="(n,i) in products" :key="n">
-    <h4> {{ products[i].name }} </h4>
-    <p> {{ products[i].price }} 만원</p> <!--{{데이터바인딩 문법}} -->
+  <div>
+    <img src="./assets/room0.jpg" class="room-img"> <!-- 상대경로(현재 위치에서부터) -->
+    <h4> 역삼동원룸 </h4>
+    <p> 50만원</p>
+    <button @click="declare_num[0]++">허위매물신고</button>
+    <span> 신고수 : {{ declare_num[0] }}</span>
+  </div>
 
-    <button @click="declare_num[i]++">허위매물신고</button>
-    <span> 신고수 : {{ declare_num[i] }}</span>
+  <div>
+    <img src="./assets/room1.jpg" class="room-img">
+    <h4> 효자동원룸 </h4>
+    <p> 50만원</p>
+
+    <button @click="declare_num[0]++">허위매물신고</button>
+    <span> 신고수 : {{ declare_num[0] }}</span>
+  </div>
+
+  <div>
+    <img src="./assets/room2.jpg" class="room-img">
+    <h4> 마포구원룸 </h4>
+    <p> 50만원</p>
+
+    <button @click="declare_num[0]++">허위매물신고</button>
+    <span> 신고수 : {{ declare_num[0] }}</span>
   </div>
 </template>
 
@@ -25,7 +42,6 @@ export default {
       // 데이터바인딩 장점? 실시간 자동 렌더링
       declare_num: [0,0,0],
       navbar : ['Home', 'Shop', 'About'],
-      products : [{name: '역삼동원룸', price: 50}, {name: '천호동원룸', price: 60}, {name: '마포구원룸', price: 70}]
     }
   },
   components: {
@@ -52,6 +68,11 @@ export default {
 .menu a {
   color: white;
   padding: 10px;
+}
+
+.room-img {
+  width: 80%;
+  margin-top: 40px;
 }
 
 </style>
