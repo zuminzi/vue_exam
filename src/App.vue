@@ -8,6 +8,9 @@
   <div v-for="(n,i) in products" :key="n">
     <h4> {{ products[i].name }} </h4>
     <p> {{ products[i].price }} 만원</p> <!--{{데이터바인딩 문법}} -->
+
+    <button @click="increase">허위매물신고</button>
+    <span> 신고수 : {{ declare_num }}</span>
   </div>
 </template>
 
@@ -20,8 +23,14 @@ export default {
       // 데이터바인딩을 위한 데이터 보관함
       // 데이터바인딩이란? JS데이터(뷰 인스턴스의 데이터)와 HTML 요소 바인딩
       // 데이터바인딩 장점? 실시간 자동 렌더링
+      declare_num: 0,
       navbar : ['Home', 'Shop', 'About'],
       products : [{name: '역삼동원룸', price: 50}, {name: '천호동원룸', price: 60}, {name: '마포구원룸', price: 70}]
+    }
+  },
+  methods : {
+    increase() {
+      this.declare_num ++;
     }
   },
   components: {
