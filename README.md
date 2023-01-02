@@ -19,6 +19,7 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### References
+- [Start Vue with Intellij](https://blo-gu.tistory.com/26)
+- [Creating Project](https://cli.vuejs.org/guide/creating-a-project.html)
+- [Configuration](https://cli.vuejs.org/config/)
