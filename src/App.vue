@@ -4,40 +4,25 @@
     <div class="white-bg">
       <h4>상세페이지</h4>
       <p>상세페이지 내용</p>
+      <button @click="modal_opened = false">닫기</button>
     </div>
   </div>
   <div class="menu">
     <a v-for="a in navbar" :key="a">{{ a }}</a>
   </div>
 
-  <div>
-    <img src="./assets/room0.jpg" class="room-img"> <!-- 상대경로(현재 위치에서부터) -->
-    <h4 @click="modal_opened = true"> 역삼동원룸 </h4>
-    <p> 50만원</p>
-    <button @click="declare_num[0]++">허위매물신고</button>
-    <span> 신고수 : {{ declare_num[0] }}</span>
+  <div v-for="(room, i) in oneroom_list" :key="room"> <!-- v-for 문법 리스트 요소 반복 시 key[i](X) list명[i](O) -->
+    <img :src="oneroom_list[i].image" class="room-img"> <!-- 상대경로(현재 위치에서부터), 태그 안의 속성 바인딩은 ':속성' 문법 -->
+    <h4 @click="modal_opened = true"> {{ oneroom_list[i].title }} </h4>
+    <p> {{ oneroom_list[i].price }}</p>
+
   </div>
 
-  <div>
-    <img src="./assets/room1.jpg" class="room-img">
-    <h4> 효자동원룸 </h4>
-    <p> 50만원</p>
-
-    <button @click="declare_num[0]++">허위매물신고</button>
-    <span> 신고수 : {{ declare_num[0] }}</span>
-  </div>
-
-  <div>
-    <img src="./assets/room2.jpg" class="room-img">
-    <h4> 마포구원룸 </h4>
-    <p> 50만원</p>
-
-    <button @click="declare_num[0]++">허위매물신고</button>
-    <span> 신고수 : {{ declare_num[0] }}</span>
-  </div>
 </template>
 
 <script>
+import data from './assets/one_room.js';
+
 export default {
   name: 'App',
   data(){
@@ -45,6 +30,7 @@ export default {
       // 데이터바인딩을 위한 데이터 보관함
       // 데이터바인딩이란? JS데이터(뷰 인스턴스의 데이터)와 HTML 요소 바인딩
       // 데이터바인딩 장점? 실시간 자동 렌더링
+      oneroom_list: data,
       modal_opened: false, // UI 상태 저장 -> 'state'
       declare_num: [0,0,0],
       navbar : ['Home', 'Shop', 'About'],
